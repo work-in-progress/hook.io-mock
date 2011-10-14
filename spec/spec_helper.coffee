@@ -31,6 +31,10 @@ module.exports =
       try
         fs.unlinkSync @tmpPath(file)
       catch ignore
+  
+  setMock: (mock) ->
+    @hook.mocks = []
+    @hook._addMock mock
     
   # Invoke this in your topic and pass your callback.
   # The cb will be called with: null,event,data

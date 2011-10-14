@@ -18,4 +18,21 @@ vows.describe("integration_task")
         return
       "THEN IT SHOULD SET UP :)": () ->
         assert.isTrue true
+  .addBatch
+    "WHEN mocking a single trigger that emits a bar::foo event":
+      topic: () ->
+        specHelper.setMock
+          name: "mock1"
+          triggers: [
+            "event" : "foo::bar"
+          ]
+          actions: [
+            "event" : "bar::foo"
+            ]
+          
+        specHelper.hookMeUp @callback
+        specHelper.hook.emit "foo::bar", {}
+        return
+      "THEN it must receive the bar::foo event": (err,event,data) ->
+        assert.equal event,"bar::foo" 
   .export module

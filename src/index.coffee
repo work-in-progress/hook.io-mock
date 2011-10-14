@@ -18,7 +18,7 @@ Mock = exports.Mock = (options) ->
       self._anyCalled self.event,data
       
     self.on "mock::add", (data)->
-      self._addMock(data)
+      self._addMock(data.mock)
 
     self.on "mock::remove", (data)->
       self._removeMock(data)
@@ -45,13 +45,13 @@ Mock.prototype._anyCalled = (eventName,data) ->
     if @_isMatch(eventName,mock)
       @_fireActions(mock)
 
-Mock.prototype._addMock = (data) ->
+Mock.prototype._addMock = (mock) ->
   ##@emit "mock::error", data
   
-  @mocks.push data.mock
+  @mocks.push mock
   
   @emit "mock::added", 
-    name : data.mock.name
+    name : mock.name
           
 Mock.prototype._removeMock = (data) ->
   ##@emit "mock::error", data
