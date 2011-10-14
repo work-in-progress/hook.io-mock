@@ -28,10 +28,10 @@
   "dependencies": {
     "colors" : "~ 0.5",
     "hook.io" : "~ 0.7.7",
-    "pkginfo" : "~ 0.2"    
+    "pkginfo" : "~ 0.2", 
+    "underscore" : "1.2.x"
   },
   "devDependencies": {
-    "underscore" : "1.2.x",
     "async" : "0.1.x",
     "should" : ">=0.2.1",    
     "vows" : ">= 0.5.9"

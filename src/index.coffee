@@ -3,15 +3,20 @@ util = require 'util'
 colors = require 'colors'
 path = require 'path'
 fs = require "fs"
+_ = require 'underscore'
 
 require('pkginfo')(module,'version','hook')
   
 Mock = exports.Mock = (options) ->
+  @.mocks = []  # Array of mock operations
+  
   self = @
   Hook.call self, options
   
   self.on "hook::ready", ->  
-  
+    self.onAny (data) =>
+      self._anyCalled self.event,data
+      
     self.on "mock::add", (data)->
       self._addMock(data)
 
@@ -24,25 +29,31 @@ Mock = exports.Mock = (options) ->
     
 util.inherits Mock, Hook
 
+Mock.prototype._isMatch = (eventName,mock) ->
+  for trigger in mock.triggers || []
+    if trigger.event == eventName
+      return true
+
+  null
+    
+Mock.prototype._fireActions = (mock) ->
+  for action in mock.actions || []
+    @emit action.event, action.data || {}
+
+Mock.prototype._anyCalled = (eventName,data) ->
+  for mock in @.mocks || []
+    if @_isMatch(eventName,mock)
+      @_fireActions(mock)
 
 Mock.prototype._addMock = (data) ->
   ##@emit "mock::error", data
   
+  @mocks.push data.mock
+  
   @emit "mock::added", 
-    name : null
-    
-###
-  console.log "Archiving #{data.source.length} files to #{data.mockget}".cyan
-
-  params = [ "-cf", data.mockget ]
-  params.push fileName for fileName in data.source
-
-  data.mockget = path.normalize data.mockget
-  @_runCommand "mock",params,"mock::archive-complete",data
-###
-      
+    name : data.mock.name
+          
 Mock.prototype._removeMock = (data) ->
-#data.mockgetPath = path.normalize data.mockgetPath if data.MockgetPath
   ##@emit "mock::error", data
 
   @emit "mock::removed", 
