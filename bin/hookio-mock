@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var Mock = require('../lib/index').Mock;
+
+var hook = new Mock({
+  name: 'mock'
+});
+
+hook.start();

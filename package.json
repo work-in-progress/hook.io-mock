@@ -1,0 +1,88 @@
+{
+  "author": "Martin Wawrusch <martin@wawrusch.com> (http://martinatsunset.com)",
+  "name": "hook.io-mock",
+  "description": "A hook to mock messages to debug your composite hooks.",
+  "version": "0.0.1",
+  "main" : "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/scottyapp/hook.io-mock.git"
+  },
+  "bin" : {
+    "hookio-mock" : "./bin/hookio-mock"
+  },
+  "directories" : {
+    "lib" : "./lib",
+    "test" : "./spec"
+  },
+  "keywords" : [
+    "hook.io","mock","bdd","testing","voews"
+  ],
+  "scripts": {
+    "test": "vows --spec spec/*-spec.coffee",
+    "watch" : "coffee -c -w  -o lib src"
+  },
+  "engines": {
+    "node": ">=0.4.8"
+  },
+  "dependencies": {
+    "colors" : "~ 0.5",
+    "hook.io" : "~ 0.7.7",
+    "pkginfo" : "~ 0.2"    
+  },
+  "devDependencies": {
+    "underscore" : "1.2.x",
+    "async" : "0.1.x",
+    "should" : ">=0.2.1",    
+    "vows" : ">= 0.5.9"
+  },
+  "bugs": { "url": "http://github.com/scottyapp/hook.io-mock/issues" },
+  "licenses": [
+    { "type": "MIT",
+      "url": "http://github.com/scottyapp/hook.io-mock/raw/master/LICENSE"
+    }
+  ],
+  "hook" : {
+    "type" : "Mock",
+    "description" : "A hook to mock messages to debug your composite hooks.",
+    "images" : [
+        { 
+          "size" : "29x29",
+          "url" : "http://github.com/scottyapp/hook.io-mock/raw/master/assets/mock29x29.png"
+        },
+        { 
+          "size" : "57x57",
+          "url" : "http://github.com/scottyapp/hook.io-mock/raw/master/assets/mock57x57.png"
+        },
+        { 
+          "size" : "114x114",
+          "url" : "http://github.com/scottyapp/hook.io-mock/raw/master/assets/mock114x114.png"
+        }        
+      ],
+    
+    "in" : [{
+        "name" : "mock::add",
+        "signatures" : []
+      },{
+        "name" : "mock::remove",
+        "signatures" : []
+      }
+    ],
+    
+    "out" : [{
+        "name" : "*",
+        "signatures" : []
+      },  
+      {
+        "name" : "mock::added",
+        "signatures" : []
+      },{
+        "name" : "mock::removed",
+        "signatures" : []
+      },{
+        "name" : "mock::error",
+        "signatures" : []
+      }
+    ]
+  }
+}
