@@ -1,7 +1,7 @@
 {
   "author": "Martin Wawrusch <martin@wawrusch.com> (http://martinatsunset.com)",
   "name": "hook.io-mock",
-  "description": "A hook to mock messages to debug your composite hooks.",
+  "description": "A hook to mock messages to debug your composite hooks. It listens to messages and replies with messages and custom data if a match is found. VERY 0.0.1",
   "version": "0.0.1",
   "main" : "lib/index.js",
   "repository": {

@@ -1,6 +1,8 @@
 ## About hook.io-mock
 
-A hook to mock messages to debug your composite hooks.
+A hook to mock messages to debug your composite hooks. It listens to messages and replies with messages and custom data if a match is found. VERY 0.0.1
+
+This is the very first version, it is not feature complete. Look at the mock-spec.coffee and spec_helper.coffee files how it can be used.
 
 ![Mock Icon](http://github.com/scottyapp/hook.io-mock/raw/master/assets/mock114x114.png)
 
