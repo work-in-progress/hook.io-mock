@@ -56,7 +56,12 @@ Mock.prototype._addMock = (mock) ->
 Mock.prototype._removeMock = (data) ->
   ##@emit "mock::error", data
 
+  toRemove = _.select @mocks, (x) -> x.name == data.name
+
+  @mocks = _.reject @mocks, (x) -> x.name == data.name
+
   @emit "mock::removed", 
     name : data.name
+    removed : toRemove
   
   

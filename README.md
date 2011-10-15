@@ -75,6 +75,10 @@ Listened to the Sucker Punch soundtrack while writing this. Not sure what to mak
 
 ## Release Notes
 
+### 0.0.2
+
+* The forgotten remove method has been added...
+
 ### 0.0.1
 
 * First version
@@ -86,7 +90,7 @@ Listened to the Sucker Punch soundtrack while writing this. Not sure what to mak
 # Publish new version
 
 * Change version in package.json
-* git tag -a v0.0.1 -m 'version 0.0.1'
+* git tag -a v0.0.2 -m 'version 0.0.2'
 * git push --tags
 * npm publish
 

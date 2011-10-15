@@ -35,4 +35,16 @@ vows.describe("integration_task")
         return
       "THEN it must receive the bar::foo event": (err,event,data) ->
         assert.equal event,"bar::foo" 
+  .addBatch
+    "WHEN removing a mock":
+      topic: () ->
+        specHelper.hookMeUp @callback
+        specHelper.hook.emit "mock::remove", name: "mock1"
+        return
+      "THEN it must receive the mock::removed event": (err,event,data) ->
+        assert.equal event,"mock::removed"
+      "THEN it the data must contain a name": (err,event,data) ->
+        assert.equal data.name, "mock1"
+      "THEN it should be removed" : (err,event,data) ->
+        assert.equal specHelper.hook.mocks.length,0
   .export module
