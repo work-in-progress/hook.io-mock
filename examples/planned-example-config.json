@@ -2,12 +2,14 @@
   "mocks" : [
     {
       "name" : "optional name",
+      "sequentialTriggers" : true,
       "triggers" : [
         {
           "event" : "someevent::stringorregex"
         },        
         {
-          "event" : "someotherevent::stringorregex"
+          "event" : "someotherevent::stringorregex",
+          "count" : 3
         }
       ],
       
@@ -15,13 +17,15 @@
         {
           "event" : "someevent::name",
           "data" : { "foo" : "bar"}
-        },
-        {
-          "event" : "someevent::name2",
-          "data" : { "foo" : "bar"}
+          "delay" : 1500,
+          "beforeScript" : "some script to execute",
+          "afterScript" : "some script to execute",
+          "count" : 1
+          
         }
-        
-      ]      
+      ]
+      
     }
+  
   ]
 }
