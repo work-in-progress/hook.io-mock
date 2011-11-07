@@ -58,13 +58,11 @@ The package config contains experimental hook.io schema definitions. The definit
 
 Check out 
 
-* http://freshfugu.com 
 * http://scottyapp.com
 
 Follow us on Twitter at 
 
 * @getscottyapp
-* @freshfugu 
 * @martin_sunset
 
 and like us on Facebook please. Every mention is welcome and we follow back.
@@ -74,6 +72,10 @@ and like us on Facebook please. Every mention is welcome and we follow back.
 Listened to the Sucker Punch soundtrack while writing this. Not sure what to make of the movie, but I love the soundtrack.
 
 ## Release Notes
+
+### 0.0.4
+
+* Minor cleanup, coffee-script beautification
 
 ### 0.0.3
 
@@ -94,7 +96,7 @@ Listened to the Sucker Punch soundtrack while writing this. Not sure what to mak
 # Publish new version
 
 * Change version in package.json
-* git tag -a v0.0.3 -m 'version 0.0.3'
+* git tag -a v0.0.4 -m 'version 0.0.4'
 * git push --tags
 * npm publish
 
